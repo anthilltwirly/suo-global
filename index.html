@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SUO Global - Transformative Business Ecosystems</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --deep-black: #0A0A0A;
+            --obsidian: #121212;
+            --liquid-silver: #E0E4E8;
+            --neon-cyan: #00FFD4;
+            --electric-purple: #8A4FFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        html, body {
+            overscroll-behavior-x: none;
+            background: var(--deep-black);
+            color: var(--liquid-silver);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .morphing-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at bottom right, 
+                rgba(138, 79, 255, 0.2) 0%, 
+                rgba(0, 255, 212, 0.1) 50%, 
+                var(--deep-black) 100%
+            );
+            z-index: -2;
+            animation: bg-morph 15s ease infinite alternate;
+        }
+
+        @keyframes bg-morph {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(10deg); }
+            100% { transform: scale(1.2) rotate(-10deg); }
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background: rgba(10,10,10,0.7);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5vw;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            filter: brightness(1.2) contrast(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--liquid-silver);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-cyan);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10,10,10,0.9);
+            backdrop-filter: blur(20px);
+            display: none;
+            z-index: 2000;
+            opacity: 0;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 80vw;
+            padding: 3rem;
+            text-align: center;
+            transform: scale(0.7);
+            opacity: 0;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 8vw, 5rem);
+            background: linear-gradient(45deg, var(--neon-cyan), var(--electric-purple));
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(224,228,232,0.7);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--neon-cyan);
+            color: var(--deep-black);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,255,212,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(10,10,10,0.9);
+                display: flex;
+                justify-content: space-around;
+                padding: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="morphing-background"></div>
+
+    <nav class="nav-container">
+        <div class="nav-wrapper">
+            <img src="path/to/logo.png" alt="SUO Global Logo" class="logo">
+            <div class="nav-links">
+                <a href="#" data-modal="services">Services</a>
+                <a href="#" data-modal="about">About</a>
+                <a href="#" data-modal="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content" id="modal-content">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Transformative Business Ecosystems</h1>
+            <p class="hero-subtitle">Pioneering global strategies that redefine entrepreneurial landscapes</p>
+            <a href="#" class="cta-button">Explore Possibilities</a>
+        </div>
+    </section>
+
+    <script>
+        // Modal Interaction
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modalType = this.getAttribute('data-modal');
+                const modal = document.getElementById('modal');
+                const modalContent = document.getElementById('modal-content');
+
+                // Dynamic Content Based on Modal Type
+                const contents = {
+                    services: `
+                        <h2>SUO Global Services</h2>
+                        <p>Comprehensive solutions spanning market entry, strategic partnerships, and global expansion.</p>
+                    `,
+                    about: `
+                        <h2>Our Global Vision</h2>
+                        <p>Bridging international business ecosystems with innovative strategies and unparalleled expertise.</p>
+                    `,
+                    contact: `
+                        <h2>Connect Globally</h2>
+                        <p>Reach out across continents: Zurich | Porto | Chandigarh | Noida-NCR | Lisbon</p>
+                    `
+                };
+
+                modalContent.innerHTML = contents[modalType];
+                modal.style.display = 'flex';
+
+                // GSAP Animations
+                gsap.fromTo(modal, 
+                    {opacity: 0},
+                    {opacity: 1, duration: 0.5}
+                );
+
+                gsap.fromTo('.modal-content', 
+                    {scale: 0.7, opacity: 0},
+                    {scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)"}
+                );
+            });
+        });
+
+        // Close Modal on Background Click
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                gsap.to(this, {opacity: 0, duration: 0.3, onComplete: () => {
+                    this.style.display = 'none';
+                }});
+            }
+        });
+    </script>
+</body>
+</html>
