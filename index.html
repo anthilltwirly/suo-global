@@ -205,6 +205,46 @@
             .nav-links a {
                 font-size: 0.8rem;
             }
+/* Spline Integration */
+.spline-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none; /* Ensure the globe doesn't interfere with interactions */
+}
+
+.spline-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Typeform Modal */
+.typeform-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.typeform-modal iframe {
+    width: 90%;
+    height: 90%;
+    border: none;
+}
+
+.typeform-modal.show {
+    display: flex;
+}
 
             .hero-content {
                 padding: 0 1rem;
@@ -214,6 +254,12 @@
 </head>
 <body>
     <div class="morphing-background"></div>
+    <!-- Spline Container -->
+<div class="spline-container">
+    <iframe src="https://my.spline.design/metallicrotatingglobe-464936a82b195b58b4829120cb94afb8/" 
+            allowfullscreen></iframe>
+</div>
+
 
     <nav class="nav-container">
         <div class="nav-wrapper">
@@ -293,6 +339,11 @@
             <p class="hero-subtitle">Pioneering global strategies that redefine entrepreneurial landscapes</p>
             <a href="#" class="cta-button">Explore Possibilities</a>
         </div>
+        <!-- Typeform Modal -->
+<div id="typeform-modal" class="typeform-modal">
+    <iframe src="https://9xkinfjkqbz.typeform.com/to/T1tj3Mwj"></iframe>
+</div>
+
     </section>
 
     <script>
