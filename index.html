@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SUO Global - Transformative Business Ecosystems</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
@@ -52,45 +53,6 @@
             0% { transform: scale(1) rotate(0deg); }
             50% { transform: scale(1.1) rotate(10deg); }
             100% { transform: scale(1.2) rotate(-10deg); }
-        }
-
-        .spline-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none; /* Ensure the globe doesn't interfere with interactions */
-        }
-
-        .spline-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .typeform-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 3000;
-        }
-
-        .typeform-modal iframe {
-            width: 90%;
-            height: 90%;
-            border: none;
-        }
-
-        .typeform-modal.show {
-            display: flex;
         }
 
         .nav-container {
@@ -212,6 +174,11 @@
             margin-bottom: 2rem;
         }
 
+        .cta-button-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
         .cta-button {
             display: inline-block;
             padding: 1rem 2rem;
@@ -222,11 +189,52 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 2px;
+            position: relative;
+            z-index: 10;
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,255,212,0.3);
+        }
+
+        .typeform-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 90%;
+            max-width: 600px;
+            height: 0;
+            background: rgba(20,20,20,0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            z-index: 1100;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 10px 50px rgba(0,255,212,0.2);
+        }
+
+        .typeform-container.active {
+            transform: translate(-50%, -50%) scale(1);
+            height: 80vh;
+            opacity: 1;
+        }
+
+        .typeform-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--neon-cyan);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .typeform-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         @media (max-width: 768px) {
@@ -254,15 +262,9 @@
 <body>
     <div class="morphing-background"></div>
 
-    <!-- Spline Container -->
-    <div class="spline-container">
-        <iframe src="https://my.spline.design/metallicrotatingglobe-464936a82b195b58b4829120cb94afb8/" 
-                allowfullscreen></iframe>
-    </div>
-
     <nav class="nav-container">
         <div class="nav-wrapper">
-            <img src="path/to/logo.png" alt="SUO Global Logo" class="logo">
+            <img src="logo.png" alt="SUO Global Logo" class="logo">
             <div class="nav-links">
                 <a href="#" data-modal="services">Services</a>
                 <a href="#" data-modal="about">About</a>
@@ -281,15 +283,22 @@
         <div class="hero-content">
             <h1 class="hero-title">Transformative Business Ecosystems</h1>
             <p class="hero-subtitle">Pioneering global strategies that redefine entrepreneurial landscapes</p>
-            <a href="#" id="explore-btn" class="cta-button">Explore Possibilities</a>
+            <div class="cta-button-wrapper">
+                <a href="#" class="cta-button" id="explore-btn">Explore Possibilities</a>
+            </div>
         </div>
     </section>
 
-    <!-- Typeform Modal -->
-    <div id="typeform-modal" class="typeform-modal">
-        <iframe src="https://9xkinfjkqbz.typeform.com/to/T1tj3Mwj"></iframe>
+    <div class="typeform-container" id="typeform-container">
+        <div class="typeform-close" id="typeform-close">&times;</div>
+        <iframe 
+            id="typeform-iframe" 
+            class="typeform-iframe" 
+            src=""
+        ></iframe>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         // Modal Interaction
         document.querySelectorAll('.nav-links a').forEach(link => {
@@ -340,20 +349,49 @@
             }
         });
 
-        // Typeform Modal Trigger
-        const exploreBtn = document.getElementById('explore-btn');
-        const typeformModal = document.getElementById('typeform-modal');
-
-        exploreBtn.addEventListener('click', function(e) {
+        // Typeform Integration
+        document.getElementById('explore-btn').addEventListener('click', function(e) {
             e.preventDefault();
-            typeformModal.classList.add('show');
+            
+            // Your Typeform URL goes here - REPLACE WITH YOUR ACTUAL TYPEFORM URL
+            const typeformUrl = 'https://your-typeform-link.typeform.com/to/yourformID';
+            
+            const typeformContainer = document.getElementById('typeform-container');
+            const typeformIframe = document.getElementById('typeform-iframe');
+            
+            // Set Typeform URL
+            typeformIframe.src = typeformUrl;
+            
+            // GSAP Animations
+            gsap.fromTo(typeformContainer, 
+                {scale: 0, opacity: 0, height: 0}, 
+                {
+                    scale: 1, 
+                    opacity: 1, 
+                    height: '80vh', 
+                    duration: 0.7, 
+                    ease: "back.out(1.7)"
+                }
+            );
+            
+            typeformContainer.classList.add('active');
         });
 
-        // Close Typeform Modal on Background Click
-        typeformModal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                typeformModal.classList.remove('show');
-            }
+        // Close Typeform
+        document.getElementById('typeform-close').addEventListener('click', function() {
+            const typeformContainer = document.getElementById('typeform-container');
+            
+            gsap.to(typeformContainer, {
+                scale: 0, 
+                opacity: 0, 
+                height: 0, 
+                duration: 0.5, 
+                ease: "back.in(1.7)",
+                onComplete: () => {
+                    typeformContainer.classList.remove('active');
+                    document.getElementById('typeform-iframe').src = '';
+                }
+            });
         });
     </script>
 </body>
