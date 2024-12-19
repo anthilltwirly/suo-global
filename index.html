@@ -262,6 +262,29 @@
             line-height: 1;
             vertical-align: middle;
           }    
+        .services-list {
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.service-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    color: var(--liquid-silver);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
     </style>
 </head>
 <body>
@@ -316,8 +339,22 @@
                 const contents = {
                     services: `
                         <h2>Global Solutions</h2><br><br>
-                        <p>We are enablers of innovation.<br><br> Our expertise spans this unique niche - crafting client-centic, end-to-end services.<br><br>Our solutions include assisting with:<br><br> ✇ Business Incorporation <br><br> ✇ Financial & Legal Due Diligence <br><br> ✇ Crafting Business Plans & Pitches <br><br> ✇ Migratory Assistance <br><br> ✇ Professional Business Support.</p>
-                    `,
+ <div class="services-list">
+        <div class="service-line">
+            <span>First service point</span>
+            <span>migration</span>
+        </div>
+        <div class="service-line">
+            <span>Second service point</span>
+            <span>migration</span>
+        </div>
+        <div class="service-line">
+            <span>Third service point</span>
+            <span>migration</span>
+        </div>
+    </div>
+`,
+
                     about: `
                         <h2>Global Vision</h2><br><br>
                         <p><br><br> SUO Global is a premier LegalTech innovator in the domain of global commerce & immigration.<br><br>For years, we have paved the path for local ventures across Asia, Africa, Europe & North America, transforming them into successful, international players with our innovative & tailored strategies.<br><br> Our expertise spans this unique niche, and it has bestowed upon us a loyal clientele that includes young, innovative upstarts as well as Fortune 500 mainstays.</p>
