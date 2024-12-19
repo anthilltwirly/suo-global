@@ -9,7 +9,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
+     
         :root {
+         @import url('https://fonts.cdnfonts.com/css/avenir');
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(135, 206, 235, 0.95);
+    backdrop-filter: blur(20px);
+    display: none;
+    z-index: 2000;
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    max-width: 80vw;
+    padding: 3rem;
+    text-align: center;
+    transform: scale(0.7);
+    opacity: 0;
+    color: #00008B;
+    font-family: 'Avenir', 'Futura', 'Proxima Nova', sans-serif;
+}
+
+.modal-content h2,
+.modal-content h3 {
+    color: #000080;
+    font-family: 'Avenir', 'Futura', 'Proxima Nova', sans-serif;
+}
+
+.services-list {
+    color: #00008B;
+    font-family: 'Avenir', 'Futura', 'Proxima Nova', sans-serif;
+}
+
+.services-left div {
+    color: #000080;
+    font-weight: 600;
+    font-family: 'Avenir', 'Futura', 'Proxima Nova', sans-serif;
+}
+
+.services-right {
+    color: #00008B;
+    font-family: 'Avenir', 'Futura', 'Proxima Nova', sans-serif;
+}
             --deep-black: #0A0A0A;
             --obsidian: #121212;
             --liquid-silver: #E0E4E8;
@@ -171,57 +220,6 @@
 
         .nav-links a:hover::after {
             width: 100%;
-        }
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(135, 206, 235, 0.95);
-    backdrop-filter: blur(20px);
-    display: none;
-    z-index: 2000;
-    opacity: 0;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    max-width: 80vw;
-    padding: 3rem;
-    text-align: center;
-    transform: scale(0.7);
-    opacity: 0;
-    color: #00008B;
-}
-
-.modal-content h2,
-.modal-content h3 {
-    color: #000080;
-}
-
-.services-list {
-    color: #00008B;
-}
-
-.services-left div {
-    color: #000080;
-    font-weight: 600;
-}
-
-.services-right {
-    color: #00008B;
-}
-        }
-
-        .modal-content {
-            max-width: 80vw;
-            padding: 3rem;
-            text-align: center;
-            transform: scale(0.7);
-            opacity: 0;
         }
 
         .hero {
