@@ -25,6 +25,16 @@
         }
 
         html, body {
+    min-height: 100vh;
+    overflow-y: auto;  /* Enables vertical scrolling */
+    position: relative;
+}
+
+.content-container {  /* Add this to your main content wrapper */
+    height: auto;
+    padding-bottom: 2rem;  /* Adds some space at the bottom */
+}
+         
     background-color: #000;  /* your current dark background */
     background-image: url('./porto1.jpg');
     background-size: cover;
