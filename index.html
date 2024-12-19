@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,9 +40,9 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(
-                ellipse at bottom right,
-                rgba(138, 79, 255, 0.2) 0%,
-                rgba(0, 255, 212, 0.1) 50%,
+                ellipse at bottom right, 
+                rgba(138, 79, 255, 0.2) 0%, 
+                rgba(0, 255, 212, 0.1) 50%, 
                 var(--deep-black) 100%
             );
             z-index: -2;
@@ -128,7 +128,6 @@
         .nav-links {
             display: flex;
             gap: 2rem;
-            align-items: center; /* Align items vertically */
         }
 
         .nav-links a {
@@ -225,6 +224,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-family: 'Avenir', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    }
         }
 
         .cta-button:hover {
@@ -252,97 +252,73 @@
                 padding: 0 1rem;
             }
         }
-
-        .phone-bullet {
+         .phone-bullet {
             font-size: 260%;
             line-height: 1;
             vertical-align: middle;
-        }
-
-        .envelope-bullet {
+         }
+          .envelope-bullet {
             font-size: 280%;
             line-height: 1;
             vertical-align: middle;
-        }
-
+          }    
         .services-list {
-            text-align: left;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-        .services-left {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
+.service-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    margin-bottom: 1rem;
+}
 
-        .connector-svg {
-            min-width: 260px;
-            height: 160px;
-        }
+.contact-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    color: var(--liquid-silver);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.services-list {
+    text-align: left;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;  /* reduced to accommodate SVG */
+}
 
-        .services-right {
-            padding-top: 1rem;
-            max-width: 300px;
-            line-height: 1.5;
-        }
+.services-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;  /* increased spacing for lines */
+}
 
-        /* Contact info styles */
-        .contact-info {
-            display: none; /* Initially hidden */
-            position: absolute;
-            top: 100%; /* Positioned right below the .nav-links */
-            right: 0;
-            text-align: right;
-            padding: 1rem;
-            background-color: rgba(10, 10, 10, 0.7); /* Same as navbar */
-            backdrop-filter: blur(10px); /* Same as navbar */
-            border-radius: 5px;
-            z-index: 999; /* Ensure it's below the modal but above other content */
-        }
+.connector-svg {
+    min-width: 260px;  /* ensures SVG maintains width */
+    height: 160px;  /* adjust based on your spacing needs */
+}
 
-        .contact-info.show {
-            display: block; /* Shown when active */
-        }
-
-        .contact-info p {
-            margin: 0.5rem 0;
-            color: var(--liquid-silver);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .about-section {
-            text-align: center;
-            max-width: 800px;
-            margin: 50px auto; /* 50px top and bottom margin, auto left and right for centering */
-            padding: 0 20px; /* Padding for smaller screens */
-        }
-
-        .about-section h2 {
-            color: var(--neon-cyan);
-            margin-bottom: 20px;
-        }
-
-        .about-section p {
-            font-size: 1rem;
-            color: rgba(224, 228, 232, 0.7);
-            line-height: 1.6;
-        }
-        #about {
-        display: none;
-     }
+.services-right {
+    padding-top: 1rem;
+    max-width: 300px;
+    line-height: 1.5;
+}
     </style>
 </head>
 <body>
     <div class="morphing-background"></div>
 
+    <!-- Spline Container -->
     <div class="spline-container">
-        <iframe src="https://my.spline.design/metallicrotatingglobe-464936a82b195b58b4829120cb94afb8/"
+        <iframe src="https://my.spline.design/metallicrotatingglobe-464936a82b195b58b4829120cb94afb8/" 
                 allowfullscreen></iframe>
     </div>
 
@@ -351,66 +327,71 @@
             <img src="suo_global_logo_black copy 2.png" alt="SUO Global Logo" class="logo">
             <div class="nav-links">
                 <a href="#" data-modal="services">Services</a>
-                <a href="#" id="about-link">About</a>
-                <a href="#" id="contact-link">Contact</a>
-                <div class="contact-info">
-                    <p>Zurich | Porto | New York </p>
-                    <p><span class="phone bullet">☏ </span> Europe: +351 937 036 477</p>
-                    <p><span class="phone bullet">☏</span> India: +91 98687 00009</p>
-                    <p><span class="envelope">✉︎</span> Email: reach@surenuppal.com</p>
-                </div>
+                <a href="#" data-modal="about">About</a>
+                <a href="#" data-modal="contact">Contact</a>
             </div>
         </div>
     </nav>
 
     <div class="modal-overlay" id="modal">
         <div class="modal-content" id="modal-content">
-            </div>
+            <!-- Dynamic content will be inserted here -->
+        </div>
     </div>
 
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">SUO GLOBAL<br>Grow & Live in Europe</h1>
-            <p class="hero-subtitle">Pioneering global strategies that redefine entrepreneurial landscapes</p>
-            <div class="about-section">
-                <h2>Global Vision</h2>
-                <p>SUO Global is a premier LegalTech innovator in the domain of global commerce & immigration. For years, we have paved the path for local ventures across Asia, Africa, Europe & North America, transforming them into successful, international players with our innovative & tailored strategies. Our expertise spans this unique niche, and it has bestowed upon us a loyal clientele that includes young, innovative upstarts as well as Fortune 500 mainstays.</p>
-            </div>
-            <br>
-            <h2 class="hero-subtitle">Register with us to get exclusive business opportunities</h2>
+            <p class="hero-subtitle">Pioneering global strategies that redefine entrepreneurial landscapes</p><br>
+            <h2 class="hero-subtitle">Register with us to get exclusive business opportunties</h2>
             <a href="#" id="explore-btn" class="cta-button">Click Here</a>
         </div>
     </section>
 
+    <!-- Typeform Modal -->
     <div id="typeform-modal" class="typeform-modal">
         <iframe src="https://9xkinfjkqbz.typeform.com/to/T1tj3Mwj"></iframe>
     </div>
 
     <script>
-        // Modal Interaction for Services
-        document.querySelectorAll('.nav-links a[data-modal="services"]').forEach(link => {
+        // Modal Interaction
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                const modalType = this.getAttribute('data-modal');
                 const modal = document.getElementById('modal');
                 const modalContent = document.getElementById('modal-content');
 
-                // Content for Services modal
-                const servicesContent = `
-                    <h3>Our Service offering can be encapsulated under 3 major heads.<br> What they all mandate for eligibility, is what we provide: </h3>
-                    <div class="services-list">
-                        <div class="services-left">
-                            <div>Business Setup</div>
-                            <div>Business Acquisition</div>
-                            <div>Startups</div>
-                        </div>
-                        <svg class="connector-svg" viewBox="0 0 260 160">
-                            <path d="M0 30 L130 30 L130 80" stroke="#259" fill="none" stroke-width="8"/>
-                            <path d="M0 80 L130 80" stroke="#259" fill="none" stroke-width="8"/>
-                            <path d="M0 130 L130 130 L130 80" stroke="#259" fill="none" stroke-width="8"/>
-                            <path d="M130 80 L260 80" stroke="#259" fill="none" stroke-width="8"/>
-                        </svg>
-                        <div class="services-right">
-                            Migration<br>+<br>Company incorporation<br>+<br>Opening of Bank Accounts<br>+<br>Acquiring Tax Numbers<br>+<br>IDs
+                // Dynamic Content Based on Modal Type
+                const contents = {
+                   services: `
+    <h3>Our Service offering can be encapsulated under 3 major heads.<br> What they all mandate for eligibility, is what we provide: </h3><br><br><br>
+    <div class="services-list">
+        <div class="services-left">
+            <div>Business Setup</div>
+            <div>Business Acquisition</div>
+            <div>Startups</div>
+        </div>
+        <svg class="connector-svg" viewBox="0 0 260 160">
+            <!-- Top line (bends down) -->
+            <path d="M0 30 L130 30 L130 80" 
+                  stroke="#259" fill="none" stroke-width="8"/>
+            
+            <!-- Middle line (straight) -->
+            <path d="M0 80 L130 80" 
+                  stroke="#259" fill="none" stroke-width="8"/>
+            
+            <!-- Bottom line (bends up) -->
+            <path d="M0 130 L130 130 L130 80" 
+                  stroke="#259" fill="none" stroke-width="8"/>
+            
+            <!-- Final merged line -->
+            <path d="M130 80 L260 80" 
+                  stroke="#259" fill="none" stroke-width="8"/>
+        </svg>
+        <div class="services-right">
+            Migration<br>     +<br>Company incorporation<br>    +<br> Opening of Bank Accounts<br>     +<br> Acquiring Tax Numbers<br>     +<br>IDs
+        </div>
     </div>
 `,
 
