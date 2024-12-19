@@ -285,6 +285,26 @@
     font-size: 0.9rem;
     line-height: 1.5;
 }
+     .services-list {
+    text-align: left;
+    width: 100%;
+    max-width: 900px;  /* increased to accommodate the wider layout */
+    margin: 0 auto;
+    display: flex;
+    gap: 300px;  /* this creates the horizontal gap you requested */
+}
+
+.services-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;  /* space between each service item */
+}
+
+.services-right {
+    padding-top: 1rem;  /* aligns with first service item */
+    max-width: 300px;  /* constrains the width of the requirements text */
+    line-height: 1.5;  /* improves readability */
+}
     </style>
 </head>
 <body>
@@ -339,19 +359,15 @@
                 // Dynamic Content Based on Modal Type
                 const contents = {
                     services: `
-                        <h2>Global Solutions</h2><br><br>
- <div class="services-list">
-        <div class="service-line">
-            <span>Business Setup</span>
-            <span>migration</span>
+                        <h2>Global Solutions</h2><br><br>  
+    <div class="services-list">
+        <div class="services-left">
+            <div>Business Setup</div>
+            <div>Business Acquisition</div>
+            <div>Startups</div>
         </div>
-        <div class="service-line">
-            <span>Business Acquisition</span><br><br>
-            <span>Migration</span><br><br>
-        </div>
-        <div class="service-line">
-            <span>Startups</span>
-            <span>migration</span>
+        <div class="services-right">
+            Migration + Company incorporation + Opening of Bank Accounts + Acquiring Tax Numbers + IDs
         </div>
     </div>
 `,
