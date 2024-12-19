@@ -25,17 +25,14 @@
         }
 
         html, body {
-            overscroll-behavior-x: none;
-            background: var(--deep-black);
-            color: var(--liquid-silver);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            -webkit-tap-highlight-color: transparent;
-            background-image: url('./porto1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;  /* keeps background fixed while scrolling */
+    background-color: #000;  /* your current dark background */
+    background-image: url('./porto1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: overlay;  /* or multiply, soft-light, etc. */
+    opacity: 0.8;
 }
 
         }
